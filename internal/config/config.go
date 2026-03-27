@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	"newgo/internal/logger"
+	"ghostnote/internal/logger"
 
 	"github.com/joho/godotenv"
 )

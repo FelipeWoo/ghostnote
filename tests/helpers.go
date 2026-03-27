@@ -3,10 +3,8 @@ package tests
 import (
 	"os"
 
-	// "newgo/internal/cache"
-	"newgo/internal/config"
-	// "newgo/internal/db"
-	"newgo/internal/logger"
+	"ghostnote/internal/config"
+	"ghostnote/internal/logger"
 
 	"github.com/rs/zerolog/log"
 )

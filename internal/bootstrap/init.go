@@ -1,8 +1,8 @@
 package bootstrap
 
 import (
-	"newgo/internal/config"
-	"newgo/internal/logger"
+	"ghostnote/internal/config"
+	"ghostnote/internal/logger"
 
 	"github.com/rs/zerolog/log"
 )

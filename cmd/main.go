@@ -5,10 +5,10 @@ import (
 	"os"
 	"os/signal"
 
-	"newgo/cmd/cli"
-	"newgo/internal/bootstrap"
-	"newgo/internal/config"
-	"newgo/internal/logger"
+	"ghostnote/cmd/cli"
+	"ghostnote/internal/bootstrap"
+	"ghostnote/internal/config"
+	"ghostnote/internal/logger"
 )
 
 func main() {
