@@ -86,6 +86,12 @@ func createMenu(noteCommand *t.NoteCommand) error {
 	if err != nil {
 		return err
 	}
+
+	title, err = normalize(title)
+	if err != nil {
+		return err
+	}
+
 	tagList := []string{tags}
 	linkList := []string{links}
 
