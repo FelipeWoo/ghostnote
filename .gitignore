@@ -1,0 +1,61 @@
+.env
+.private/
+bin/
+logs/
+coverage.out
+
+
+# Binaries
+/bin/
+/build/
+/dist/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Go build artifacts
+*.test
+*.out
+*.cover
+coverage.*
+
+# Go workspace / modules
+go.work
+go.work.sum
+
+# Dependency directories (if vendoring)
+vendor/
+
+# Logs
+*.log
+
+# Env files
+.env
+.env.*
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# OS
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+
+# CLI runtime data (optional)
+data/
+cache/
+
+# Generated files (if you use codegen)
+*.gen.go
+
+
+# Cache directories
+.cache/

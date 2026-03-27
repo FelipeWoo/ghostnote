@@ -1,0 +1,16 @@
+module newgo
+
+go 1.24.2
+
+require (
+	github.com/joho/godotenv v1.5.1
+	github.com/rs/zerolog v1.34.0
+)
+
+require (
+	github.com/chzyer/readline v0.0.0-20180603132655-2972be24d48e // indirect
+	github.com/manifoldco/promptui v0.9.0 // indirect
+	github.com/mattn/go-colorable v0.1.13 // indirect
+	github.com/mattn/go-isatty v0.0.19 // indirect
+	golang.org/x/sys v0.12.0 // indirect
+)
