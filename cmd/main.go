@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"os/signal"
 
@@ -9,6 +10,10 @@ import (
 	"ghostnote/internal/bootstrap"
 	"ghostnote/internal/config"
 	"ghostnote/internal/logger"
+
+	s "ghostnote/internal/services"
+	st "ghostnote/internal/storage"
+	t "ghostnote/internal/transport/cli"
 )
 
 func main() {
@@ -26,25 +31,45 @@ func main() {
 
 	logger.Info("Ready to process requests ...")
 
-	// 1) Listen Ctrl+C
 	go func() {
 		<-sigChan
 		logger.Warn("Canceled by Ctrl+C")
 		cancel()
 	}()
 
-	// 2) Run CLI
-	go func() {
-		err := cli.Menu(ctx)
-		if err != nil {
-			logger.Fail("app error: %v", err)
-			cancel()
-		}
-		cancel() // for now
-	}()
+	dir := "./vault"
 
-	// 3) Main
-	<-ctx.Done()
+	if err := ensureDir(dir); err != nil {
+		logger.Fatal("%v", err)
+		cancel()
+	}
+
+	repo := st.NewNoteRepository(dir)
+	noteService := s.NewNoteService(repo)
+	noteCommand := t.NewNoteCommand(noteService)
+
+	err := cli.Menu(ctx, noteCommand)
+	if err != nil {
+		logger.Fail("app error: %v", err)
+	}
 
 	logger.Info("Shutting down...")
+}
+
+func ensureDir(path string) error {
+	info, err := os.Stat(path)
+
+	if os.IsNotExist(err) {
+		return os.MkdirAll(path, 0755)
+	}
+
+	if err != nil {
+		return err
+	}
+
+	if !info.IsDir() {
+		return fmt.Errorf("path exists but is not a directory: %s", path)
+	}
+
+	return nil
 }
