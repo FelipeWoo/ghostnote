@@ -59,3 +59,5 @@ cache/
 
 # Cache directories
 .cache/
+
+vault/
