@@ -25,18 +25,17 @@ func (r *NoteRepository) Save(note *d.Note) error {
 }
 
 func buildMarkdown(n *d.Note) string {
-	return fmt.Sprintf(
-		`---
-		id: %s
-		title: %s
-		tags: %s
-		links: %s
-		created_at: %d
-		updated_at: %d
-		---
+	return fmt.Sprintf(`---
+id: %s
+title: %s
+tags: %s
+links: %s
+created_at: %d
+updated_at: %d
+---
 
-		%s
-		`,
+%s
+`,
 		n.ID,
 		n.Title,
 		n.Tags,
