@@ -19,3 +19,8 @@ ghostnote list
 ghostnote read <id>
 ghostnote edit <id>
 ghostnote delete <id>
+```
+
+## Philosophy
+
+>Notes should exist without interrupting your workflow.
