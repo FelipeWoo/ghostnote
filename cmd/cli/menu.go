@@ -64,7 +64,7 @@ func createMenu(noteCommand *t.NoteCommand) error {
 	}
 
 	tagsPrompt := promptui.Prompt{
-		Label: "Note tags",
+		Label: "Note tags, separated by comma",
 	}
 	tags, err := tagsPrompt.Run()
 	if err != nil {
@@ -72,7 +72,7 @@ func createMenu(noteCommand *t.NoteCommand) error {
 	}
 
 	linksPrompt := promptui.Prompt{
-		Label: "Note links",
+		Label: "Note links, separated by comma",
 	}
 	links, err := linksPrompt.Run()
 	if err != nil {
@@ -92,8 +92,10 @@ func createMenu(noteCommand *t.NoteCommand) error {
 		return err
 	}
 
-	tagList := []string{tags}
-	linkList := []string{links}
+	payload = cleanPayload(payload)
+
+	tagList := cleanCSV(tags)
+	linkList := cleanCSV(links)
 
 	err = noteCommand.Create(title, payload, tagList, linkList)
 	if err != nil {
